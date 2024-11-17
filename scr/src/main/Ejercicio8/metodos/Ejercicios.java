@@ -1,6 +1,7 @@
 package metodos;
 
 import objeto.Datos;
+import java.util.InputMismatchException;
 
 import java.util.Scanner;
 
@@ -8,15 +9,46 @@ public class Ejercicios {
     private Datos dg;
 
     // metodo para ingresar los datos
-    public void  llenar(){
+    public void llenar() {
         Scanner input = new Scanner(System.in);
         Datos d = new Datos();
-        System.out.println("Ingrese la velocidad inicial: ");
-        d.setV0(input.nextDouble());
-        System.out.println("Ingrese el angulo del primer elemento: ");
-        d.setAng1(input.nextDouble());
-        System.out.println("Ingrese el angulo del segundo elemento: ");
-        d.setAng2(input.nextDouble());
+
+        // Ingreso de velocidad inicial
+        while (true) {
+            try {
+                System.out.println("Ingrese la velocidad inicial: ");
+                d.setV0(input.nextDouble());
+                break; // Si la entrada es correcta, salimos del bucle
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                input.next(); // Limpiar el buffer del scanner
+            }
+        }
+
+        // Ingreso del ángulo del primer elemento
+        while (true) {
+            try {
+                System.out.println("Ingrese el ángulo del primer elemento: ");
+                d.setAng1(input.nextDouble());
+                break; // Si la entrada es correcta, salimos del bucle
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                input.next(); // Limpiar el buffer del scanner
+            }
+        }
+
+        // Ingreso del ángulo del segundo elemento
+        while (true) {
+            try {
+                System.out.println("Ingrese el ángulo del segundo elemento: ");
+                d.setAng2(input.nextDouble());
+                break; // Si la entrada es correcta, salimos del bucle
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                input.next(); // Limpiar el buffer del scanner
+            }
+        }
+
         this.dg = d;
     }
 
